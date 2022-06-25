@@ -96,7 +96,7 @@ class NewJobForm(forms.ModelForm):
 
 #login form
 class LoginForm(forms.Form):
-	username=forms.EmailField(widget=forms.TextInput(attrs={"placeholder":"Username",'class':'form-group'}))
+	username=forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Username",'class':'form-group'}))
 	password=forms.CharField(widget=forms.PasswordInput(attrs={"placeholder":"Password",'class':'form-group'}))
 
 # class Meta:

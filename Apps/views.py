@@ -1,7 +1,6 @@
 from collections import UserList
 from operator import ge
 from pipes import Template
-import re
 from tokenize import group
 from urllib import request
 from django.http import HttpResponse, HttpResponseRedirect
@@ -12,7 +11,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User, auth, Group
 from django.contrib.auth import authenticate,login,logout
 # import urllib.request
-import urllib.request as ur
 from .forms import*
 from django.contrib import messages 
 
@@ -93,32 +91,35 @@ class HomveView(TemplateView):
             
 
    
-# class PostJobView(TemplateView):
-#     template_name = "Home/postjob.html"
-#     form_class = NewJobForm
-#     success_url = "/"
-#     def post(self, request):
-#         newform = NewJobForm(request.POST)
-#         if newform.is_valid():
-#             feature_img = newform.cleaned_data['feature_img']
-#             email = newform.cleaned_data['email']
-#             job_title = newform.cleaned_data['job_title']
-#             location = newform.cleaned_data['location']
-#             job_region = newform.cleaned_data['job_region']
-#             job_type = newform.cleaned_data['job_type']
-#             job_description = newform.cleaned_data['job_description']
-#             company_name = newform.cleaned_data['company_name']
-#             tagline = newform.cleaned_data['tagline']
-#             company_description = newform.cleaned_data['company_description']
-#             website = newform.cleaned_data['website']
-#             facebook_username = newform.cleaned_data['facebook_username']
-#             twitter_username = newform.cleaned_data['twitter_username']
-#             linkedin_username = newform.cleaned_data['linkedin_username']
-#             logo = newform.cleaned_data['logo']
-#             newjob = User(feature_img=feature_img, email=email, job_title=job_title,location=location, job_region=job_region, job_type=job_type,job_description=job_description,company_name=company_name,tagline=tagline,company_description=company_description, website=website, facebook_username=facebook_username, twitter_username=twitter_username, linkedin_username=linkedin_username, logo=logo)
-#             newjob.save()
-#             print(f"new job : {newjob}")
-#             return HttpResponseRedirect('/')
+class PostJobView(TemplateView):
+    template_name = "Home/postjob.html"
+    form_class = NewJobForm
+    success_url = "/"
+
+    def post(self, request):
+        print("data from post of a job",request.POST)
+        newform = NewJobForm(request.POST)
+        print("cleaned data", newform.cleaned_data)
+        if newform.is_valid():
+            feature_img = newform.cleaned_data['feature_img']
+            email = newform.cleaned_data['email']
+            job_title = newform.cleaned_data['job_title']
+            location = newform.cleaned_data['location']
+            job_region = newform.cleaned_data['job_region']
+            job_type = newform.cleaned_data['job_type']
+            job_description = newform.cleaned_data['job_description']
+            company_name = newform.cleaned_data['company_name']
+            tagline = newform.cleaned_data['tagline']
+            company_description = newform.cleaned_data['company_description']
+            website = newform.cleaned_data['website']
+            facebook_username = newform.cleaned_data['facebook_username']
+            twitter_username = newform.cleaned_data['twitter_username']
+            linkedin_username = newform.cleaned_data['linkedin_username']
+            logo = newform.cleaned_data['logo']
+            newjob = NewJob.objects.create(feature_img=feature_img, email=email, job_title=job_title,location=location, job_region=job_region, job_type=job_type,job_description=job_description,company_name=company_name,tagline=tagline,company_description=company_description, website=website, facebook_username=facebook_username, twitter_username=twitter_username, linkedin_username=linkedin_username, logo=logo)
+            # newjob.save()
+            print(f"new job : {newjob}")
+            return HttpResponseRedirect('/')
 
     
 class LoginView(TemplateView):
@@ -129,8 +130,10 @@ class LoginView(TemplateView):
     def post(self, request):
         form = self.form_class(data = request.POST)
         username =request.POST['username']
-        print(username)
         password =request.POST['password']
+        print("form datas", form.data)
+        print("validation", form.is_valid())
+        print("data after clean", form.cleaned_data)
         if form.is_valid():
             print("inside is valid")
             user = authenticate(request, username=username, password=password)
@@ -143,6 +146,7 @@ class LoginView(TemplateView):
             else:
                 messages.success(request, ('Error Logging In - Please Try Again...'))
                 return HttpResponseRedirect('login')
+     
         else:
             return HttpResponse("errors")
         

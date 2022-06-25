@@ -4,7 +4,7 @@
 
 {% block content %} 
   <!-- HOME -->
-  <section class="section-hero overlay inner-page bg-image" style="background-image: "url('images/hero_1.jpg');"" id="home-section">
+  <section class="section-hero overlay inner-page bg-image"  id="home-section">  <!--style="background-image: url('static/images/job/hero_1.jpg');"-->
     <div class="container">
       <div class="row">
         <div class="col-md-7">
@@ -131,7 +131,9 @@
                 Browse File<input type="file" hidden>
               </label>
             </div>
-
+            <div class="form-group form-button">
+              <input type="submit" name="postjob" class="form-submit" value="postjob"/>
+          </div>
           </form>
         </div>
 
@@ -144,7 +146,7 @@
             <div class="col-6">
             {% comment %} <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a> {% endcomment %}
             </div> 
-            <div class="col-6">
+            <div class="col-6 form-group form-button">
               <a href="#" name="postjob" class="btn btn-block btn-primary btn-md">Save Job</a>
             </div>
           </div>
