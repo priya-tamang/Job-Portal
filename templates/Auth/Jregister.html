@@ -1,0 +1,129 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JobBoard</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href={% static "fonts/Auth/material-icon/css/material-design-iconic-font.min.css" %}>
+
+    <!-- Main css -->
+    <link rel="stylesheet" href={% static "css/Auth/style.css" %}>
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title"> Jobseeker Register</h2>
+                        <form action="" method="POST" class="register-form" id="jregister">
+                             {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="fullname" id="fullname" placeholder="Fullname"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account-add"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Username"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_password" id="re_password" placeholder="Repeat your password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="text" name="phone" id="username" placeholder="Phone Number"/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="register" class="form-submit" value="Register" id="mybotton"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src={% static "images/Auth/signup-image.jpg" alt="sing up image" %}></figure>
+                        <a href="/login/" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <!-- JS -->
+    {% comment %} <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type = "text/javascript">
+        $("#id_email").on("keyup", function(){
+            var a = $(this).val();
+            if(a ==""){
+                $("#email").text("Please type a valid email").css('color','red')
+            }
+            else{
+                $.ajax({
+                    method:"get",
+                    url:"/email_checker/",
+                    data:{
+                        'email': a,
+                    },
+                    sucess:function(data){
+                        $('#mybotton').attr("disabled",true):
+                        $('#email').text("Email not valid:"+ data.message).css('color','red')
+    
+                    }
+                })
+            }
+        })
+    
+    </script>
+    </script>
+    <script type="text/javascript">
+     $("#id_password").on("keyup",function(){
+         var b = $(this).val();
+         if(b == ""){ 		$("#password").text("Password error:"+"please type password");
+             return false;
+            }
+         if(b.length<5){
+                $("#password").text( "Password error:" +"password must be greater than 5 character");
+        // 		return fals
+            }
+            if(b.length>15){
+             $("#password").text("Password error:"+"password must me less than 15 character");
+             return false;
+            }
+    
+        // })
+        $("#id_password").on("keyup", function(){
+            $('#id_re_password').val("");
+        })
+    
+        $("#id_re_password").on("keyup",function(){
+            var c = $(this).val();
+            var hello = $("#id_password").val();
+            if(hello != c){
+                $("#re_password").text("re_password Error:"+"password didn't match");
+    
+            }
+            else{
+                $("#re_password").text("re_password Error:"+"password matched");
+            }
+        })
+    })
+    </script> {% endcomment %}
+</body>
+</html>

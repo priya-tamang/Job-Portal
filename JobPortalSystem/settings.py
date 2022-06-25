@@ -17,6 +17,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DITR = os.path.join(BASE_DIR, 'templates')
 STATIC_DITR = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 
 
