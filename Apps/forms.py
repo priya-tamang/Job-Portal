@@ -2,6 +2,8 @@ from dataclasses import fields
 from django import forms
 from django.urls import re_path
 from .models import*
+from django.contrib.auth.models import User, Group
+from django.forms import ModelForm
 
 class EmployerForm(forms.ModelForm):
     fullname = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -63,7 +65,6 @@ class JoobseekerForm(forms.ModelForm):
         username=self.cleaned_data["username"]
         if Jobseeker.objects.filter(username=username).exists():
             raise forms.ValidationError("This username is already exist")
-
         return username
 
     def clean_re_password(self):
@@ -74,34 +75,34 @@ class JoobseekerForm(forms.ModelForm):
         return re_password
 
 class NewJobForm(forms.ModelForm):
-    feature_img = forms.ImageField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    job_title = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    location = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    job_region = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    job_type = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    job_description = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    company_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    tagline = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    company_description = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    website = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    facebook_username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    twitter_username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    linkedin_username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group'}))
-    logo = forms.ImageField(widget=forms.TextInput(attrs={'class': 'form-group'}))
+    feature_img = forms.ImageField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    job_title = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    location = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    job_region = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    job_type = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    job_description = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    company_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    tagline = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    company_description = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    website = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    facebook_username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    twitter_username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    linkedin_username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-group'}))
+    logo = forms.ImageField(widget=forms.TextInput(attrs={'class':'form-group'}))
 
     class Meta:
         model = NewJob
         fields = ["feature_img","email","job_title","location","job_region","job_type","job_description","company_name","tagline","company_description","website","facebook_username","twitter_username","linkedin_username","logo"]
 
+    # def 
+
 #login form
 class LoginForm(forms.Form):
 	username=forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Username",'class':'form-group'}))
 	password=forms.CharField(widget=forms.PasswordInput(attrs={"placeholder":"Password",'class':'form-group'}))
+    
 
-# class Meta:
-#     model = User
-#     fields = ['username', 'password']
 
 
    

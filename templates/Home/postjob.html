@@ -4,7 +4,7 @@
 
 {% block content %} 
   <!-- HOME -->
-  <section class="section-hero overlay inner-page bg-image"  id="home-section">  <!--style="background-image: url('static/images/job/hero_1.jpg');"-->
+  <section class="section-hero overlay inner-page bg-image" style="background-image: url('/static/images/job/hero_1.jpg');"  id="home-section">  
     <div class="container">
       <div class="row">
         <div class="col-md-7">
@@ -43,92 +43,92 @@
       </div>
       <div class="row mb-5">
         <div class="col-lg-12">
-          <form class="p-4 p-md-5 border rounded" action="" method="POST" >
+          <form class="p-4 p-md-5 border rounded" action="" method="POST" enctype="multipart/form-data" >
             {% csrf_token %}
             <h3 class="text-black mb-5 border-bottom pb-2">Job Details</h3>
             
             <div class="form-group">
               <label for="company-website-tw d-block">Upload Featured Image</label> <br>
               <label class="btn btn-primary btn-md btn-file">
-                Browse File<input type="file" hidden>
+                Browse File<input type="file" name="feature_img" hidden>
               </label>
             </div>
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" placeholder="you@yourdomain.com">
+              <input type="text" class="form-control" id="email" name = "email" placeholder="you@yourdomain.com">
             </div>
             <div class="form-group">
               <label for="job-title">Job Title</label>
-              <input type="text" class="form-control" id="job-title" placeholder="Product Designer">
+              <input type="text" class="form-control" id="job-title" name="job_title" placeholder="Product Designer">
             </div>
             <div class="form-group">
               <label for="job-location">Location</label>
-              <input type="text" class="form-control" id="job-location" placeholder="e.g. New York">
+              <input type="text" class="form-control" id="job-location" name="location" placeholder="e.g. New York">
             </div>
 
             <div class="form-group">
               <label for="job-region">Job Region</label>
-              <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
-                    <option>Anywhere</option>
-                    <option>San Francisco</option>
-                    <option>Palo Alto</option>
-                    <option>New York</option>
-                    <option>Manhattan</option>
-                    <option>Ontario</option>
-                    <option>Toronto</option>
-                    <option>Kansas</option>
-                    <option>Mountain View</option>
+              <select class="selectpicker border rounded" id="job-region" name="job_region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
+                    <option value = "Anywhere">Anywhere</option>
+                    <option value = "San Francisco">San Francisco</option>
+                    <option value = "Palo Alto">Palo Alto</option>
+                    <option value = "New York">New York</option>
+                    <option value = "Manhattan">Manhattan</option>
+                    <option value = "Ontario">Ontario</option>
+                    <option value = "Toronto">Toronto</option>
+                    <option value = "Kansas">Kansas</option>
+                    <option value = "Mountain View">Mountain View</option>
                   </select>
             </div>
 
             <div class="form-group">
               <label for="job-type">Job Type</label>
-              <select class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
-                <option>Part Time</option>
-                <option>Full Time</option>
+              <select class="selectpicker border rounded" id="job-type" name="job_type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
+                <option value = "Part Time">Part Time</option>
+                <option value = "Full Time">Full Time</option>
               </select>
             </div>
             <div class="form-group">
               <label for="job-location">Job Description</label>
-              <textarea style="width: 100%"></textarea>
+              <textarea  name="job_description" style="width: 100%"></textarea>
 
             </div>
             <h3 class="text-black my-5 border-bottom pb-2">Company Details</h3>
             <div class="form-group">
               <label for="company-name">Company Name</label>
-              <input type="text" class="form-control" id="company-name" placeholder="e.g. New York">
+              <input type="text" class="form-control" id="company-name"  name= "company_name" placeholder="e.g. New York">
             </div>
 
             <div class="form-group">
               <label for="company-tagline">Tagline (Optional)</label>
-              <input type="textfeild" class="form-control" id="company-tagline" placeholder="e.g. New York">
+              <input type="textfeild" name="tagline" class="form-control" id="company-tagline" placeholder="e.g. New York">
             </div>
             
             <div class="form-group">
               <label for="company-website">Website (Optional)</label>
-              <input type="text" class="form-control" id="company-website" placeholder="https://">
+              <input type="text" class="form-control" id="company-website" name = "website" name="company_description" placeholder="https://">
             </div>
 
             <div class="form-group">
               <label for="company-website-fb">Facebook Username (Optional)</label>
-              <input type="text" class="form-control" id="company-website-fb" placeholder="companyname">
+              <input type="text" class="form-control" id="company-website-fb" name="facebook_username" placeholder="companyname">
             </div>
 
             <div class="form-group">
               <label for="company-website-tw">Linkedin Username (Optional)</label>
-              <input type="text" class="form-control" id="company-website-tw" placeholder="companyname">
+              <input type="text" class="form-control" id="company-website-tw" name="linkedin_username" placeholder="companyname">
             </div>
 
             <div class="form-group">
               <label for="company-website-tw">Job Description</label>
-              <textarea style="width: 100%"></textarea>
+              <textarea  name = "company_description" style="width: 100%"></textarea>
             </div>
 
             <div class="form-group">
               <label for="company-website-tw d-block">Upload Logo</label> <br>
               <label class="btn btn-primary btn-md btn-file">
-                Browse File<input type="file" hidden>
+                Browse File<input type="file"  name= "logo" hidden>
               </label>
             </div>
             <div class="form-group form-button">
