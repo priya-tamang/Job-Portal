@@ -20,6 +20,7 @@
               <li><a href="post-job.html">Post a Job</a></li>
             </ul> {% endcomment %}
           </li>
+          <li><a href="#">Contact</a></li>
           <li class="has-children">
             <a href="#">Register</a>
             <ul class="dropdown">
@@ -29,7 +30,6 @@
             </ul>
           </li>
           {% comment %} <li><a href="blog.html">Blog</a></li> {% endcomment %}
-          <li><a href="#">Contact</a></li>
           <li class="d-lg-none"><a href="/postjob/"><span class="mr-2">+</span> Post a Job</a></li>
           <li class="d-lg-none"><a href="/login/">Login</a></li>
         </ul>
@@ -51,41 +51,41 @@
 {% block content %} 
 
  <!-- HOME -->
- <section class="home-section section-hero overlay bg-image" style="background-image: url('static/images/job/hero_1.jpg');" id="home-section">
+ <section class="home-section section-hero overlay bg-image" style="background-image: url('/static/images/job/hero_1.jpg');" id="home-section">
 
   <div class="container">
     <div class="row align-items-center justify-content-center">
       <div class="col-md-12">
         <div class="mb-5 text-center">
           <h1 class="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est, consequuntur perferendis.</p>
+          <p>Because people are our most precious assets… we only let the best managers in the world lead them</p>
         </div>
-        <form method="post" class="search-jobs-form">
+        <form method="GET" class="search-jobs-form" action="/search" >
           <div class="row mb-5">
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <input type="text" class="form-control form-control-lg" placeholder="Job title, Company...">
+              <input type="text" name = "job_title" class="form-control form-control-lg" placeholder="Job title">
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Region">
-                <option>Anywhere</option>
-                <option>San Francisco</option>
-                <option>Palo Alto</option>
-                <option>New York</option>
-                <option>Manhattan</option>
-                <option>Ontario</option>
-                <option>Toronto</option>
-                <option>Kansas</option>
-                <option>Mountain View</option>
+              <select class="selectpicker" data-style="btn-white btn-lg" name="location" data-width="100%" data-live-search="true" title="Select Location">
+                <option value = "Anywhere">Anywhere</option>
+                <option value = "Kathmandu">Kathmandu</option>
+                <option value = "Bhaktapur">Bhaktapur</option>
+                <option value = "Chabahil">Chabahil</option>
+                <option value = "Koteshwor">Koteshwor</option>
+                <option value = "Baneshwor">Baneshwor</option>
+                <option value = "Kalanki">Kalanki</option>
+                <option value = "Gorkha">Gorkha</option>
+                <option value = "Pokhara">Pokhara</option>
               </select>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Job Type">
-                <option>Part Time</option>
-                <option>Full Time</option>
+              <select class="selectpicker" data-style="btn-white btn-lg" name = "job_type" data-width="100%" data-live-search="true" title="Select Job Type">
+                <option value ="Part Time">Part Time</option>
+                <option value = "Full Time">Full Time</option>
               </select>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
+              <Input type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search" name = "search" value = "search"></span>
             </div>
           </div>
           {% comment %} <div class="row">
@@ -175,7 +175,8 @@
 
         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
           <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-            <h2>{{n.job_title}}</h2>
+            <a href="{% url 'Apps:singlejob' n.id %}"><h2>{{n.job_title}}</h2></a>
+            <br>
             <strong>{{n.company_name}}</strong> 
           </div>
           <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">

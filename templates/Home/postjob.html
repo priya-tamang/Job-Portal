@@ -36,7 +36,7 @@
               {% comment %} <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a> {% endcomment %}
             </div> 
             <div class="col-6">
-              <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a>
+              {% comment %} <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a> {% endcomment %}
             </div>
           </div>
         </div>
@@ -48,26 +48,42 @@
             <h3 class="text-black mb-5 border-bottom pb-2">Job Details</h3>
             
             <div class="form-group">
-              <label for="company-website-tw d-block">Upload Featured Image</label> <br>
+              <label for="company-website-tw d-block">Upload Logo</label> <br>
               <label class="btn btn-primary btn-md btn-file">
-                Browse File<input type="file" name="feature_img" hidden>
+                Browse File<input type="file" name="logo" hidden>
               </label>
             </div>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" name = "email" placeholder="you@yourdomain.com">
-            </div>
+            {% comment %} <div class="form-group">
+              <label for="company_name">Company Name</label>
+              <input type="text" class="form-control" id="company_name" name = "company_name" placeholder="Company Name">
+            </div> {% endcomment %}
             <div class="form-group">
               <label for="job-title">Job Title</label>
               <input type="text" class="form-control" id="job-title" name="job_title" placeholder="Product Designer">
             </div>
             <div class="form-group">
+              <label for="job-location">Job Description</label>
+              <textarea  name="job_description" style="width: 100%"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="job-location">Responsibilites</label>
+              <textarea  name="responsibilites" style="width: 100%"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="job-location">Eduction And Experiance</label>
+              <textarea  name="eduction_experiance" style="width: 100%"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="job-location">Other Benifits</label>
+              <textarea  name="other_benifits" style="width: 100%"></textarea>
+            </div>
+            {% comment %} <div class="form-group">
               <label for="job-location">Location</label>
               <input type="text" class="form-control" id="job-location" name="location" placeholder="e.g. New York">
-            </div>
+            </div> {% endcomment %}
 
-            <div class="form-group">
+            {% comment %} <div class="form-group">
               <label for="job-region">Job Region</label>
               <select class="selectpicker border rounded" id="job-region" name="job_region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
                     <option value = "Anywhere">Anywhere</option>
@@ -80,6 +96,34 @@
                     <option value = "Kansas">Kansas</option>
                     <option value = "Mountain View">Mountain View</option>
                   </select>
+            </div> {% endcomment %}
+
+            {% comment %} <div class="form-group">
+              <label for="job-type">Job Type</label>
+              <select class="selectpicker border rounded" id="job-type" name="job_type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
+                <option value = "Part Time">Part Time</option>
+                <option value = "Full Time">Full Time</option>
+              </select>
+            </div> {% endcomment %}
+            {% comment %} <div class="form-group">
+              <label for="job-location">Job Description</label>
+              <textarea  name="job_description" style="width: 100%"></textarea>
+
+            </div> {% endcomment %}
+            <h3 class="text-black my-5 border-bottom pb-2">Job Summanry</h3>
+            <div class="form-group">
+              <label for="company-name">Company Name</label>
+              <input type="text" class="form-control" id="company-name"  name= "company_name" placeholder="e.g. New York">
+            </div>
+
+            {% comment %} <div class="form-group">
+              <label for="published_on">Published On</label>
+              <input type="textfeild" name="published_on" class="form-control" id="published_on" placeholder="April 14, 2019">
+            </div> {% endcomment %}
+            
+            <div class="form-group">
+              <label for="company-website">Vacancy</label>
+              <input type="text" class="form-control" id="vacancy" name = "vacancy" name="vacancy" placeholder="20">
             </div>
 
             <div class="form-group">
@@ -88,51 +132,45 @@
                 <option value = "Part Time">Part Time</option>
                 <option value = "Full Time">Full Time</option>
               </select>
-            </div>
-            <div class="form-group">
-              <label for="job-location">Job Description</label>
-              <textarea  name="job_description" style="width: 100%"></textarea>
+            </div> 
 
-            </div>
-            <h3 class="text-black my-5 border-bottom pb-2">Company Details</h3>
             <div class="form-group">
-              <label for="company-name">Company Name</label>
-              <input type="text" class="form-control" id="company-name"  name= "company_name" placeholder="e.g. New York">
+              <label for="job-location">Location</label>
+              <input type="text" class="form-control" id="job-location" name="location" placeholder="e.g. Kathmandu">
             </div>
 
             <div class="form-group">
-              <label for="company-tagline">Tagline (Optional)</label>
-              <input type="textfeild" name="tagline" class="form-control" id="company-tagline" placeholder="e.g. New York">
-            </div>
-            
-            <div class="form-group">
-              <label for="company-website">Website (Optional)</label>
-              <input type="text" class="form-control" id="company-website" name = "website" name="company_description" placeholder="https://">
+              <label for="company-website-fb">Experience</label>
+              <input type="text" class="form-control" id="experience" name="experience" placeholder="1">
             </div>
 
             <div class="form-group">
-              <label for="company-website-fb">Facebook Username (Optional)</label>
-              <input type="text" class="form-control" id="company-website-fb" name="facebook_username" placeholder="companyname">
+              <label for="company-website-tw">Salary</label>
+              <input type="text" class="form-control" id="Salary" name="Salary" placeholder="10,000 to 50,000">
             </div>
 
             <div class="form-group">
-              <label for="company-website-tw">Linkedin Username (Optional)</label>
-              <input type="text" class="form-control" id="company-website-tw" name="linkedin_username" placeholder="companyname">
-            </div>
+              <label for="job-type">Gender</label>
+              <select class="selectpicker border rounded" id="gender" name="gender" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Gender ">
+                <option value = "Male">Male</option>
+                <option value = "Female">Female</option>
+                <option value = "Other">Any</option>
+              </select>
+            </div> 
 
-            <div class="form-group">
-              <label for="company-website-tw">Job Description</label>
-              <textarea  name = "company_description" style="width: 100%"></textarea>
-            </div>
+            {% comment %} <div class="form-group">
+              <label for="company-website-tw">Deadline</label>
+              <input type="text" class="form-control" id="deadline" name="deadline" placeholder="April 14, 2019">
+            </div> {% endcomment %}
 
-            <div class="form-group">
+            {% comment %} <div class="form-group">
               <label for="company-website-tw d-block">Upload Logo</label> <br>
               <label class="btn btn-primary btn-md btn-file">
                 Browse File<input type="file"  name= "logo" hidden>
               </label>
-            </div>
+            </div> {% endcomment %}
             <div class="form-group form-button">
-              <input type="submit" name="postjob" class="form-submit" value="postjob"/>
+              <input type="submit" name="postjob" class="btn btn-block btn-primary btn-md" value="postjob"/>
           </div>
           </form>
         </div>
@@ -141,17 +179,17 @@
       </div>
       <div class="row align-items-center mb-5">
         
-        <div class="col-lg-4 ml-auto">
+        {% comment %} <div class="col-lg-4 ml-auto">
           <div class="row">
             <div class="col-6">
             {% comment %} <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a> {% endcomment %}
-            </div> 
+            {% comment %} </div> 
             <div class="col-6 form-group form-button">
-              <a href="#" name="postjob" class="btn btn-block btn-primary btn-md">Save Job</a>
+              <input type="submit" name="postjob" class="btn btn-block btn-primary btn-md" value="postjob"> 
             </div>
           </div>
         </div>
-      </div>
+      </div> {% endcomment %}
     </div>
   </section>
   

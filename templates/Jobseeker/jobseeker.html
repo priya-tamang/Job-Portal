@@ -67,6 +67,7 @@
 {% block content %} 
 
  <!-- HOME -->
+ <!-- HOME -->
  <section class="home-section section-hero overlay bg-image" style="background-image: url('/static/images/job/hero_1.jpg');" id="home-section">
 
   <div class="container">
@@ -183,13 +184,16 @@
       <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
         <a href="job-single.html"></a>
         <div class="job-listing-logo">
-          <img src="{% static "{{n.logo}}" %}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+          {% if n.logo %}
+          <img src="{{n.logo.url}}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+          {% endif %}
         </div>
         
 
         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
           <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-            <h2>{{n.job_title}}</h2>
+            <a href="{% url 'Apps:singlejob' n.id %}"><h2>{{n.job_title}}</h2></a>
+            <br>
             <strong>{{n.company_name}}</strong> 
           </div>
           <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
