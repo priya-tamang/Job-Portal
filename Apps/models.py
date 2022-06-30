@@ -97,3 +97,13 @@ class Application(TimeStamp):
 
     # def __str__(self):
     #     return self.job
+
+class Contact(TimeStamp):
+    firstname = models.CharField(max_length=255, blank=True, null=True)
+    lastname = models.CharField(max_length=255, blank=True, null=True)
+    email = models.EmailField(max_length=255, blank=True, null=True)
+    subject = models.CharField(max_length=255, blank=True, null=True)
+    message = models.TextField( blank=True, null=True)
+
+    def __str__(self):
+        return self.firstname

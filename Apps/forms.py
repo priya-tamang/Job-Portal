@@ -1,4 +1,6 @@
 from dataclasses import fields
+from email import message
+from pyexpat import model
 from urllib import response
 from django import forms
 from django.urls import re_path
@@ -108,6 +110,17 @@ class ApplicationForm(forms.ModelForm):
 	class Meta:
 		model=Application
 		fields=["cv"]
+
+class ContactForm(forms.ModelForm):
+    firstname = forms.CharField(widget=forms.TextInput())
+    lastname= forms.CharField(widget=forms.TextInput())
+    email = forms.EmailField(widget=forms.TextInput())
+    subject = forms.CharField(widget=forms.TextInput())
+    message = forms.CharField(widget=forms.TextInput())
+    
+    class Meta:
+        model = Contact
+        fields = ['firstname','lastname','email', 'subject', 'message']
 
 
 

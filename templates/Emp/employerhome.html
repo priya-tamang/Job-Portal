@@ -7,15 +7,15 @@
 <header class="site-navbar mt-3">
   <div class="container-fluid">
     <div class="row align-items-center">
-      <div class="site-logo col-6"><a href="/">JobBoard</a></div>
+      <div class="site-logo col-6"><a href="/eindex/">JobBoard</a></div>
       
       
       
 
       <nav class="mx-auto site-navigation">
         <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-          <li><a href="/" class="nav-link active">Home</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="/eindex/" class="nav-link active">Home</a></li>
+          <li><a href="/eabout/">About</a></li>
           <li class="has-children">
             {% comment %} <a href="job-listings.html">Categories</a>
             <ul class="dropdown">
@@ -30,9 +30,9 @@
               <li><a href="/jregister/">Jobseeks</a></li>
               
             </ul>
-          </li> {% endcomment %}
+          </li> 
           {% comment %} <li><a href="blog.html">Blog</a></li> {% endcomment %}
-          <li><a href="#">Contact</a></li>
+          <li><a href="/econtact/">Contact</a></li>
           <li class="d-lg-none"><a href="/postjob/"><span class="mr-2">+</span> Post a Job</a></li>
           <li class="d-lg-none"><a href="/logout/">Logout</a></li>
            
@@ -74,7 +74,7 @@
       <div class="col-md-12">
         <div class="mb-5 text-center">
           <h1 class="text-white font-weight-bold">Hello {{user.username}}</h1>
-          <p>Find your dream job</p>
+          <p>Find your perfect Employee for your Company...</p>
         </div>
         <form method="post" class="search-jobs-form">
           <div class="row mb-5">
@@ -130,7 +130,7 @@
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
         <h2 class="section-title mb-2 text-white">JobBoard Site Stats</h2>
-        <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita unde officiis recusandae sequi excepturi corrupti.</p>
+        <p class="lead text-white">Because people are our most precious assets… We only let the best managers in the world lead them</p>
       </div>
     </div>
     <div class="row pb-0 block__19738 section-counter">
@@ -181,9 +181,11 @@
     {% for n in newjob %}
     <ul class="job-listings mb-5">
       <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-        <a href="job-single.html"></a>
+        <a href="{% url 'Apps:empsinglejob' n.id %}"></a>
         <div class="job-listing-logo">
-          <img src="{% static "{{n.logo}}" %}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+          {% if n.logo %}
+          <img src="{{n.logo.url}}" alt="Free Website Template by Free-Template.co" class="img-fluid">
+          {% endif %}
         </div>
         
 
@@ -231,7 +233,8 @@
     <div class="row align-items-center">
       <div class="col-md-8">
         <h2 class="text-white">Looking For A Job?</h2>
-        <p class="mb-0 text-white lead">Lorem ipsum dolor sit amet consectetur adipisicing elit tempora adipisci impedit.</p>
+        <p class="mb-0 text-white lead">You can actually invent things here
+        </p>
       </div>
       <div class="col-md-3 ml-auto">
         <a href="/login/" class="btn btn-warning btn-block btn-lg">Log In</a>

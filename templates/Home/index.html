@@ -12,7 +12,7 @@
       <nav class="mx-auto site-navigation">
         <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
           <li><a href="/" class="nav-link active">Home</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="/about/">About</a></li>
           <li class="has-children">
             {% comment %} <a href="job-listings.html">Categories</a>
             <ul class="dropdown">
@@ -20,7 +20,7 @@
               <li><a href="post-job.html">Post a Job</a></li>
             </ul> {% endcomment %}
           </li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="/contact/">Contact</a></li>
           <li class="has-children">
             <a href="#">Register</a>
             <ul class="dropdown">
@@ -58,9 +58,10 @@
       <div class="col-md-12">
         <div class="mb-5 text-center">
           <h1 class="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
-          <p>Because people are our most precious assets… we only let the best managers in the world lead them</p>
+          {% comment %} <p>Because people are our most precious assets… we only let the best managers in the world lead them</p> {% endcomment %}
         </div>
-        <form method="GET" class="search-jobs-form" action="/search" >
+        <form method="GET" class="search-jobs-form"  name="search" action="/search/" value="{{request.GET.search}}" >
+          {% csrf_token %}
           <div class="row mb-5">
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
               <input type="text" name = "job_title" class="form-control form-control-lg" placeholder="Job title">
@@ -85,19 +86,9 @@
               </select>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-              <Input type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search" name = "search" value = "search"></span>
+              <Input type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search" name = "search" value = "Search"></span>
             </div>
           </div>
-          {% comment %} <div class="row">
-            <div class="col-md-12 popular-keywords">
-              <h3>Trending Keywords:</h3>
-              <ul class="keywords list-unstyled m-0 p-0">
-                <li><a href="#" class="">UI Designer</a></li>
-                <li><a href="#" class="">Python</a></li>
-                <li><a href="#" class="">Developer</a></li>
-              </ul>
-            </div>
-          </div> {% endcomment %}
         </form>
       </div>
     </div>
@@ -114,17 +105,18 @@
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
         <h2 class="section-title mb-2 text-white">JobBoard Site Stats</h2>
-        <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita unde officiis recusandae sequi excepturi corrupti.</p>
+        <p class="lead text-white">Because people are our most precious assets… We only let the best managers in the world lead them</p>
       </div>
     </div>
     <div class="row pb-0 block__19738 section-counter">
-
+ {% for c in count%}
       <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
         <div class="d-flex align-items-center justify-content-center mb-2">
-          <strong class="number" data-number="1930">0</strong>
+          <strong class="number" data-number="{{c.candidatescount}}">0</strong>
         </div>
         <span class="caption">Candidates</span>
       </div>
+      {% endfor %}
 
       <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
         <div class="d-flex align-items-center justify-content-center mb-2">
@@ -165,7 +157,7 @@
     {% for n in newjob %}
     <ul class="job-listings mb-5">
       <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-        <a href="job-single.html"></a>
+        <a href="{% url 'Apps:singlejob' n.id %}"></a>
         <div class="job-listing-logo">
           {% if n.logo %}
           <img src="{{n.logo.url}}" alt="Free Website Template by Free-Template.co" class="img-fluid">
@@ -175,7 +167,7 @@
 
         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
           <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-            <a href="{% url 'Apps:singlejob' n.id %}"><h2>{{n.job_title}}</h2></a>
+            <h2>{{n.job_title}}</h2>
             <br>
             <strong>{{n.company_name}}</strong> 
           </div>
@@ -218,7 +210,7 @@
     <div class="row align-items-center">
       <div class="col-md-8">
         <h2 class="text-white">Looking For A Job?</h2>
-        <p class="mb-0 text-white lead">Lorem ipsum dolor sit amet consectetur adipisicing elit tempora adipisci impedit.</p>
+        <p class="mb-0 text-white lead"></p>
       </div>
       <div class="col-md-3 ml-auto">
         <a href="/login/" class="btn btn-warning btn-block btn-lg">Log In</a>

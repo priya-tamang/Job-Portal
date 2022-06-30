@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Apps.models import Employer, Jobseeker, NewJob, Application
+from Apps.models import Employer, Jobseeker, NewJob, Application, Contact
 # Register your models here.
 @admin.register(Employer)
 class RegisterAdmin(admin.ModelAdmin):
@@ -16,6 +16,10 @@ class RegisterAdmin(admin.ModelAdmin):
 @admin.register(Application)
 class RegisterAdmin(admin.ModelAdmin):
     list_display = ['job', 'jobseeker']
+
+@admin.register(Contact)
+class RegisterAdmin(admin.ModelAdmin):
+    list_display = ['firstname', 'lastname', 'email']
 
 
 
